@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" ng-app="AngularRESTClient" ng-controller="GlobalCtrl">
+<head>
+    <meta charset="UTF-8">
+    <title>Itexico | Angular REST Client</title>
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/darkly/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button class="navbar-toggle">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Angular REST Client</a>
+    </div>
+</nav>
+<div class="jumbotron">
+    <h1>Getting started <span class="fa fa-smile-o"></span></h1>
+    <span class="lead">Or: how to setup a RESTful client connecting to an external RESTful API</span>
+</div>
+
+<div ui-view="hint"></div>
+<div ui-view></div>
+
+<div class="well" ng-repeat="rdata in randomData">
+    <h1>Name: {{rdata.name}}</h1>
+    <span class="lead">Value: {{rdata.value}}</span>
+</div>
+
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="vendor/angular-animate/angular-animate.min.js"></script>
+
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script src="app/Core.js"></script>
+<script src="app/controllers/GlobalController.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "AngularRESTClientExample_Itexico",
+  "version": "0.0.1",
+  "description": "A short client example made in Angular for consuming from a REST API",
+  "author": "arturomc<amosqueda@itexico.net>",
+  "dependencies": {
+    "bootstrap": "latest",
+    "angular": "latest",
+    "angular-ui-router": "latest",
+    "font-awesome": "latest",
+    "angular-animate": "~1.2.22"
+  }
+}
