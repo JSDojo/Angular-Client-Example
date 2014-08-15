@@ -1,13 +1,22 @@
-angular.module('AngularRESTClient', ['ui.router', ngAnimate])
-    .run(
-    [        '$rootScope', '$state', '$stateParams',
-        function ($rootScope,   $state,   $stateParams) {
+angular.module('AngularRESTClient', ['ui.router'])
 
-        // It's very handy to add references to $state and $stateParams to the $rootScope
-        // so that you can access them from any scope within your applications.For example,
-        // <li ui-sref-active="active }"> will set the <li> // to active whenever
-        // 'contacts.list' or one of its decendents is active.
-        $rootScope.$state = $state;
-        $rootScope.$stateParams = $stateParams;
-    }
-]);
+    .config(function($urlRouterProvider, $stateProvider){
+        console.log('hi');
+        console.log($urlRouterProvider);
+        console.log($stateProvider);
+
+        $urlRouterProvider
+            .when('/', '/home')
+            .otherwise('/home');
+
+        $stateProvider
+            .state('home', {
+                url: '/home',
+                templateUrl:'views/testTemplate.html'
+            })
+
+            .state('about', {
+                url:'/about',
+                templateUrl: 'views/view-about.html'
+            })
+    });

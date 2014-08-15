@@ -1,7 +1,7 @@
 var express = require('express'),
     server  = express();
 
-var port    = process.env.PORT || 3000;
+var port    = process.env.PORT || 3001;
 
 server.use('/', express.static(__dirname+"/public/"));
 
