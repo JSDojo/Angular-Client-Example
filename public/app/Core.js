@@ -12,7 +12,7 @@ angular.module('AngularRESTClient', ['ui.router'])
         $stateProvider
             .state('home', {
                 url: '/home',
-                templateUrl:'views/testTemplate.html'
+                templateUrl:'views/contactList.html'
             })
 
             .state('about', {
