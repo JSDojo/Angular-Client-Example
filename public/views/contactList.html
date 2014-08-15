@@ -1,0 +1,31 @@
+<form class="form-inline" action="" role="form" ng-submit="">
+    <div class="form-group">
+        <input type="search" class="form-control" id="searchContactInput" placeholder="Search contact..."/>
+        <input type="submit" id="submit" value="go!"/>
+
+
+    </div>
+</form>
+
+<div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Full Name</th>
+            <th>I know them from</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>something else...</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="rdata in randomData">
+                <td>{{rdata.name}}</td>
+                <td>{{rdata.name}}</td>
+                <td>{{rdata.name}}</td>
+                <td>{{rdata.name}}</td>
+                <td>{{rdata.value}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
