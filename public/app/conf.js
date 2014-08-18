@@ -1,23 +1,17 @@
-// Make sure to include the `ui.router` module as a dependency.
-angular.module('AngularRESTClient')
-    .config(
-    [          '$stateProvider', '$urlRouterProvider',
-        function ($stateProvider,   $urlRouterProvider) {
+app.config(function($urlRouterProvider, $stateProvider) {
+    $urlRouterProvider
+        .when('/', '/home')
+        .otherwise('/home');
 
-            /////////////////////////////
-            // Redirects and Otherwise //
-            /////////////////////////////
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: 'views/contactList.html',
+            controller: 'ContactTableCtrl'
+        })
 
-            // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
-            $urlRouterProvider.otherwise('/somewhere');
-
-
-            //////////////////////////
-            // State Configurations //
-            //////////////////////////
-
-            // Use $stateProvider to configure your states.
-            $stateProvider.state("somewhere",
-                {url:'/somewhere',
-                    template:'<div class="jumbotron"><h1>Somewhere</h1></div>'});
-        }]);
+        .state('about', {
+            url: '/about',
+            templateUrl: 'views/view-about.html'
+        })
+});

@@ -1,22 +1,34 @@
-angular.module('AngularRESTClient', ['ui.router'])
+app = angular.module('AngularRESTClient', ['ui.router']);
 
-    .config(function($urlRouterProvider, $stateProvider){
-        console.log('hi');
-        console.log($urlRouterProvider);
-        console.log($stateProvider);
+app.factory('Contacts', function($http) {
+	var factory = {};
 
-        $urlRouterProvider
-            .when('/', '/home')
-            .otherwise('/home');
+	factory.findAll = function(callback) {
+		$http({
+			url: 'http://localhost:3001/api/hc-contacts',
+			method: 'GET'
+		}).success(function(result) {
+			callback(result)
+		}).error(function(error){
+			callback(false);
+		});
+	}
 
-        $stateProvider
-            .state('home', {
-                url: '/home',
-                templateUrl:'views/contactList.html'
-            })
+	factory.find = function(id, callback) {
 
-            .state('about', {
-                url:'/about',
-                templateUrl: 'views/view-about.html'
-            })
-    });
+	}
+
+	factory.create = function(data, callback) {
+		
+	}
+	
+	factory.update = function(id, data, callback) {
+
+	}
+	
+	factory.delete = function(id, callback) {
+
+	}
+
+	return factory;
+});
