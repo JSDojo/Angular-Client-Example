@@ -19,13 +19,17 @@
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="rdata in randomData">
-                <td>{{rdata.name}}</td>
-                <td>{{rdata.name}}</td>
-                <td>{{rdata.name}}</td>
-                <td>{{rdata.name}}</td>
-                <td>{{rdata.value}}</td>
+            <tr ng-repeat="dude in contacts">
+                <td>{{dude.fname}} {{dude.lname}}</td>
+                <td>{{dude.where}}</td>
+                <td>{{dude.phone}}</td>
+                <td>{{dude.address}}</td>
+                <td><a href="#" class="btn btn-primary">See more details</a></td>
             </tr>
         </tbody>
     </table>
 </div>
+
+        <div id="addContact">
+            <h1>adding</h1>
+        </div>
