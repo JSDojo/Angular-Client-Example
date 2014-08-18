@@ -1,3 +1,1 @@
-angular.module('AngularRESTClient', ['ui.router']);
-
-
+app = angular.module('AngularRESTClient', ['ui.router']);
