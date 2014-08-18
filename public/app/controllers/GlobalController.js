@@ -1,11 +1,12 @@
-angular.module('AngularRESTClient', [])
+app.controller('GlobalCtrl', function($scope, Contacts) {
+    $scope.randomData = [];
 
-.controller('GlobalCtrl', function($scope) {
-        $scope.randomData = [
-            {name:"first", value:"first value"},
-            {name:"second", value:"second value"},
-            {name:"third", value:"third value"}
-        ];
+	init();
 
+    function init () {
+    	Contacts.findAll(function(contacts) {
+			$scope.randomData = contacts;
+    	});
+    }
 
-    });
+});
