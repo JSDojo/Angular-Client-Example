@@ -4,9 +4,9 @@ A simple example client made in angular, to consume from a RESTful API from an e
 
 ## The goal
 
-The main cause of building this is to provide a reference for me and the team when... 
+The main cause of building this is to provide a reference for me and the team when...
 
-- building Angular Aplications, 
+- building Angular Aplications,
 - interacting with web services and RESTful APIs
 - using dependency/package management with NPM and Bower
 - using automation with Grunt (probably will make a GULP build later on)
@@ -15,7 +15,7 @@ The main cause of building this is to provide a reference for me and the team wh
 
 First we want to make sure our environment is all setup, for this we will need to install the next stuff...
 
-**NodeJS** | Install node from [ this link right here](http://nodejs.org/), just follow the steps, wither in windows or 
+**NodeJS** | Install node from [ this link right here](http://nodejs.org/), just follow the steps, wither in windows or
                                                                    unix based OSs, check if you installed it correctly by running thenext comamand on your cli
 
     node --version
@@ -23,17 +23,17 @@ First we want to make sure our environment is all setup, for this we will need t
 and
 
     npm --version
-    
+
 npm is going to be our package manager for all backend related stuff
 
 **Bower**  | After installing NodeJS, you should have an instance of NPM installed as well, try this by running the next command:
 
     npm install -g bower
-    
+
 this will install Bower globally, wich is going to be our package manager for all frontend related stuff.
 
 Ok, now we are ( *almost* ) ready to start ...
-    
+
 # ContactsAPI
 
 This projects serves but two purposes: test $http requests against a backend RESTful API... and be able to add, delete and update users record
@@ -41,9 +41,9 @@ This projects serves but two purposes: test $http requests against a backend RES
 
 
 ### 1. The simple setup
-The following config files were created 
-	
-- package.json (for backend dependencies management and project configuration) 
+The following config files were created
+
+- package.json (for backend dependencies management and project configuration)
 - bower.json(for front end dependencies management)
 - .bowerrc(used to configure bower)
 
@@ -54,17 +54,17 @@ Also, these other files were created
 
 #### 1.1 Managing backend dependencies with NPM
 
-The dependencies I declared in our package.json file are as follow: 
+The dependencies I declared in our package.json file are as follow:
 
 	{
         "name":"ContactsAPI",
         "description":"A backend API with a frontend purposely for adding, updating and deleting users records",
         "dependencies":{
-            "express":"latest",        
+            "express":"latest",
             "mongoose":"latest",
             "body-parser":"latest",
             "morgan":"latest"
-        }    
+        }
 	}
 
 **express**: A multi tiered backend devcandy, used to set up our RESTful API
@@ -82,9 +82,9 @@ The dependencies declared for our frontend look as follows:
 	{
         "name":"ContactsAPI",
         "description":"A backend API with a frontend purposely for adding, updating and deleting users records,
-        "dependencies":{        
+        "dependencies":{
             "angular":"latest"
-        }    
+        }
     }
 
 
@@ -93,7 +93,7 @@ The directory specified below tells bower where we want our dependencies deliver
 	{
         "directory":"public/vendor"
     }
-    
+
 This overrides the default directory (./bower_components) and tells bower to install stuff on "./public/vendor"
 
 ### 1.3 Installing all that stuff
@@ -101,16 +101,16 @@ This overrides the default directory (./bower_components) and tells bower to ins
 Now lets run some commandline... commands
 
 	npm install -g bower
-    
-And then  
+
+And then
 
 	npm install
-    
+
 and finally
 
     bower install
-    
-This should leave our directory tree looking somewhat like this: 
+
+This should leave our directory tree looking somewhat like this:
 
 	ContactsApi(master)
     |--node_modules
@@ -123,7 +123,32 @@ This should leave our directory tree looking somewhat like this:
     |--package.json
     |--README.md
     |--server.js
-    
+
+
+### 1.4 Adding a *mongodb* instance to work locally
+
+If we want to run this project locally, an instance of mongodb must be set up as well.
+
+[Download](http://www.mongodb.org/downloads) MongoDB.
+
+MongoDB is self contained, and by default will be installed in a folder such as *C:\Program Files\MongoDB 2.6 Standard*. Feel free to take the contents of the file and move them to something like *C:\mongo* so you can work more easily with it.
+
+There is a default folder in which MongoDB tries to store your databases: *\data\db* or *C:\data\db*, you need to create this folder structure, or you can specify a path when running mongo like this:
+
+    C:\mongodb\bin\mongod.exe --dbpath d:\test\mongodb\data
+
+Assuming that files were moved into folder *C:\mongodb*, with ```--dbpath``` the path in which mongo should try to store the databases information is being overwritten to *d:\test\mongodb\data*
+
+Notice that to run the *"mongo"* process, we need to call *mongod.exe*. This is pretty much the mongo **server**.
+
+Once mongod is running, we can test our app's connections to the database
+
+**Note**
+MongoDB also comes with a client that can communicate with the server and allows us to work with our data, it is a command line interface and you can start using it like this:
+
+    C:\mongodb\bin\mongo.exe
+
+See more information about installing MongoDB [here](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows/) (windows).
 
 ### 2. The  design
 
@@ -156,4 +181,4 @@ So our api should be something like this
 
 
 
-   
+
