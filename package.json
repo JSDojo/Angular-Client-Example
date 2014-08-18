@@ -6,7 +6,9 @@
     "repository":"TBD",
     "dependencies":{
         "express":"latest",
-        "morgan":"latest"
+        "morgan":"latest",
+        "body-parser":"latest",
+        "mongoose":"latest"
     },
     "devDependencies":{
         "grunt":"latest",
