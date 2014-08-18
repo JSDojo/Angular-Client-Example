@@ -1,7 +1,5 @@
-app.factory('Contacts', function($http) {
-	var factory = {};
-
-	factory.findAll = function(callback) {
+app. service('Contacts', function($http) {
+	this.findAll = function(callback) {
 		$http({
 			url: 'http://localhost:3001/api/hc-contacts',
 			method: 'GET'
@@ -12,21 +10,19 @@ app.factory('Contacts', function($http) {
 		});
 	}
 
-	factory.find = function(id, callback) {
+	this.find = function(id, callback) {
 
 	}
 
-	factory.create = function(data, callback) {
+	this.create = function(data, callback) {
 		
 	}
 	
-	factory.update = function(id, data, callback) {
+	this.update = function(id, data, callback) {
 
 	}
 	
-	factory.delete = function(id, callback) {
+	this.delete = function(id, callback) {
 
 	}
-
-	return factory;
 });
