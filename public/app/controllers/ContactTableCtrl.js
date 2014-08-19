@@ -18,6 +18,17 @@ app.controller('ContactTableCtrl', function($scope, Contacts){
             var zero = places - num.toString().length + 1;
             return Array(+(zero > 0 && zero)).join("0") + num;
         }
+        function search(q, where) {
+            q = q.replace(/\s+/g, ' ').trim().split(" ");
+
+            for (i in q) {
+                if (where.indexOf(q[i])>=0) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
 
         var q = $scope.searchText;
 
@@ -39,46 +50,46 @@ app.controller('ContactTableCtrl', function($scope, Contacts){
         filters = 0,
 
         // searching... 
-        matched_with_address = contact.address.toLowerCase().indexOf(q),
-        matched_with_fname = contact.fname.toLowerCase().indexOf(q),
-        matched_with_info = contact.info.toLowerCase().indexOf(q),
-        matched_with_lname = contact.lname.toLowerCase().indexOf(q),
-        matched_with_location = contact.location.toLowerCase().indexOf(q),
-        matched_with_phone = contact.phone.toLowerCase().indexOf(q),
-        matched_with_where = contact.where.toLowerCase().indexOf(q);
+        matched_with_address = search(q, contact.address.toLowerCase()),
+        matched_with_fname = search(q, contact.fname.toLowerCase()),
+        matched_with_info = search(q, contact.info.toLowerCase()),
+        matched_with_lname = search(q, contact.lname.toLowerCase()),
+        matched_with_location = search(q, contact.location.toLowerCase()),
+        matched_with_phone = search(q, contact.phone.toLowerCase()),
+        matched_with_where = search(q, contact.where.toLowerCase());
 
         // results...
         var to_match_filter = [
-            matched_with_address>=0?"1":"0",
-            matched_with_fname>=0?"1":"0",
-            matched_with_info>=0?"1":"0",
-            matched_with_lname>=0?"1":"0",
-            matched_with_location>=0?"1":"0",
-            matched_with_phone>=0?"1":"0",
-            matched_with_where>=0?"1":"0",
+            matched_with_address ? "1":"0",
+            matched_with_fname ? "1":"0",
+            matched_with_info ? "1":"0",
+            matched_with_lname ? "1":"0",
+            matched_with_location ? "1":"0",
+            matched_with_phone ? "1":"0",
+            matched_with_where ? "1":"0",
             0
         ].join("");
 
         // generating bit field...
-        if (matched_with_address>=0) {
+        if (matched_with_address) {
             filters |= by_address;
         } 
-        if (matched_with_fname>=0) {
+        if (matched_with_fname) {
             filters |= by_fname;
         }
-        if (matched_with_info>=0) {
+        if (matched_with_info) {
             filters |= by_info;
         }
-        if (matched_with_lname>=0) {
+        if (matched_with_lname) {
             filters |= by_lname;
         }
-        if (matched_with_location>=0) {
+        if (matched_with_location) {
             filters |= by_location;
         }
-        if (matched_with_phone>=0) {
+        if (matched_with_phone) {
             filters |= by_phone;
         }
-        if (matched_with_where>=0) {
+        if (matched_with_where) {
             filters |= by_where;
         }
 
