@@ -1,4 +1,4 @@
-app. service('Contacts', function($http) {
+app.service('Contacts', function($http) {
 	this.findAll = function(callback) {
 		$http({
 			url: 'http://localhost:3001/api/hc-contacts',
