@@ -1,1 +1,4 @@
-app = angular.module('AngularRESTClient', ['ui.router']);
+(function() {
+	angular
+		.module('AngularRESTClient', ['ui.router']);
+})();
