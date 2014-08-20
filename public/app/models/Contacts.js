@@ -1,5 +1,5 @@
 (function(){
-	var Contacts = function($http) {
+	var Contact = function($http) {
 		this.findAll = function(callback) {
 			$http({
 				url: 'http://localhost:3001/api/hc-contacts',
@@ -30,5 +30,5 @@
 
 	angular
 		.module('AngularRESTClient')
-		.service('Contacts', Contacts);
+		.service('Contact', Contact);
 })();

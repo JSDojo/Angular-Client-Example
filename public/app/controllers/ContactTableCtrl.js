@@ -1,18 +1,13 @@
 (function() {
-    ContactTableCtrl = function(Contacts){
+    ContactTableCtrl = function(Contact){
         var vm = this;
-        
+
         init();
 
         function init() {
-            vm.contactsList = [];
-            Contacts.findAll(function(contacts){
-                if (contacts) {
-                    vm.contactsList = contacts;
-                }
-            });
+            vm.contactsList = Contact.contactsList;  
         }
-
+        
         vm.search = function(contact) {
             function zeroPadding(num, places) {
                 var zero = places - num.toString().length + 1;
@@ -103,6 +98,19 @@
             }
         }
 
+    }
+
+    ContactTableCtrl.resolve = {
+        contacts: function (Contact, $q) {
+            var defer = $q.defer();
+
+            Contact.findAll(function(result) {
+              Contact.contactsList = result;
+              defer.resolve();
+            });
+
+            return defer.promise;
+        }
     }
 
     angular

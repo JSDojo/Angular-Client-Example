@@ -11,7 +11,8 @@
                     url: '/home',
                     templateUrl: 'views/contactList.html',
                     controller: 'ContactTableCtrl',
-                    controllerAs: 'contact'
+                    controllerAs: 'contact',
+                    resolve: ContactTableCtrl.resolve
                 })
 
                 .state('about', {
