@@ -7,7 +7,8 @@ app.config(function($urlRouterProvider, $stateProvider) {
         .state('home', {
             url: '/home',
             templateUrl: 'views/contactList.html',
-            controller: 'ContactTableCtrl'
+            controller: 'ContactTableCtrl',
+            controllerAs: 'contact'
         })
 
         .state('about', {
