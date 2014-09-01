@@ -19,5 +19,12 @@
                     url: '/about',
                     templateUrl: 'views/view-about.html'
                 })
+
+                .state('create', {
+                    url: '/create',
+                    templateUrl: 'views/create.html',
+                    controller: 'ContactTableCtrl',
+                    controllerAs: 'contact'
+                })
         });
 })();
