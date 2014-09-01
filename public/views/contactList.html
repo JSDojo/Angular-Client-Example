@@ -1,9 +1,6 @@
 <form class="form-inline" action="" role="form" ng-submit="">
     <div class="form-group">
-        <input type="search" class="form-control" id="searchContactInput" placeholder="Search contact..."/>
-        <input type="submit" id="submit" value="go!"/>
-
-
+        <input type="text" class="form-control" placeholder="Filter contacts..." ng-model="contact.searchText" />
     </div>
 </form>
 
@@ -19,7 +16,7 @@
         </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="dude in contacts">
+            <tr ng-repeat="dude in contact.contactsList | filter:contact.search">
                 <td>{{dude.fname}} {{dude.lname}}</td>
                 <td>{{dude.where}}</td>
                 <td>{{dude.phone}}</td>
