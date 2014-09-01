@@ -1,0 +1,28 @@
+<form>
+	<div class="form-group">
+        <label for="input_fname">First Name</label>
+        <input class="form-control" id="input_fname" ng-model="contact.newContact.fname" />
+    </div>
+
+    <div class="form-group">
+        <label for="input_lname">Last Name</label>
+        <input class="form-control" id="input_lname" ng-model="contact.newContact.lname" />
+    </div>
+
+    <div class="form-group">
+        <label for="input_where">Where</label>
+        <input class="form-control" id="input_where" ng-model="contact.newContact.where" />
+    </div>
+
+    <div class="form-group">
+        <label for="input_phone">Phone</label>
+        <input class="form-control" id="input_phone" ng-model="contact.newContact.phone" />
+    </div>
+
+    <div class="form-group">
+        <label for="input_address">Address</label>
+        <input class="form-control" id="input_phone" ng-model="contact.newContact.address" />
+    </div>
+
+    <button type="submit" class="btn btn-success" ng-click="contact.createContact()">Save it!</button>
+</form>

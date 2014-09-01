@@ -1,10 +1,12 @@
-<form class="form-inline" action="" role="form" ng-submit="">
-    <div class="form-group">
-        <input type="text" class="form-control" placeholder="Filter contacts..." ng-model="contact.searchText" />
-    </div>
-</form>
+<div ng-show="contact.contactsList == 0">There are not contacts to show. <a ui-sref="new">Try adding one</a>.</div>
 
-<div>
+<div ng-show="contact.contactsList.length > 0">
+    <form class="form-inline" action="" role="form" ng-submit="">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Filter contacts..." ng-model="contact.searchText" />
+        </div>
+    </form>
+    
     <table class="table">
         <thead>
         <tr>
@@ -26,7 +28,3 @@
         </tbody>
     </table>
 </div>
-
-        <div id="addContact">
-            <h1>adding</h1>
-        </div>

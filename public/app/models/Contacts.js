@@ -1,30 +1,58 @@
 (function(){
-	var Contact = function($http) {
-		this.findAll = function(callback) {
+	var Contact = function($http, $q) {
+		this.findAll = function() {
+			var deferred = $q.defer();
+
 			$http({
-				url: 'http://localhost:3001/api/hc-contacts',
+				url: 'http://localhost:3001/api/contacts',
 				method: 'GET'
 			}).success(function(result) {
-				callback(result)
+				deferred.resolve(result);
 			}).error(function(error){
-				callback(false);
+				deferred.reject(error);
 			});
+
+			return deferred.promise;
 		}
 
-		this.find = function(id, callback) {
-
-		}
-
-		this.create = function(data, callback) {
+		this.find = function(id) {
+			var deferred = $q.defer();
 			
+			deferred.resolve(true);
+
+			return deferred.promise;
+		}
+
+		this.create = function(data) {
+			var deferred = $q.defer();
+
+			$http({
+				url: 'http://localhost:3001/api/contacts',
+				method: 'POST',
+				data: data
+			}).success(function(result) {
+				deferred.resolve(true);
+			}).error(function(error){
+				deferred.reject(error);
+			});	
+
+			return deferred.promise;
 		}
 		
-		this.update = function(id, data, callback) {
+		this.update = function(id, data) {
+			var deferred = $q.defer();
 
+			deferred.resolve(true);
+
+			return deferred.promise;
 		}
 		
-		this.delete = function(id, callback) {
+		this.delete = function(id) {
+			var deferred = $q.defer();
 
+			deferred.resolve(true);
+
+			return deferred.promise;
 		}
 	}
 

@@ -98,18 +98,23 @@
             }
         }
 
+        vm.createContact = function() {
+            Contact.create(vm.newContact).then(function(result){
+                console.log(result);
+            });
+        }
     }
 
     ContactTableCtrl.resolve = {
         contacts: function (Contact, $q) {
-            var defer = $q.defer();
+            var deferred = $q.defer();
 
-            Contact.findAll(function(result) {
-              Contact.contactsList = result;
-              defer.resolve();
+            Contact.findAll().then(function(result) {
+                Contact.contactsList = result;
+                deferred.resolve();
             });
 
-            return defer.promise;
+            return deferred.promise;
         }
     }
 
