@@ -45,12 +45,13 @@ module.exports = function(server) {
         contact.info    = rb.info;
 
         contact.save(function(err){
-            res.send('Resource not allowed');
+            if (err){
+                res.send('Resource not allowed');
+            }
+            res.json({"message":"success", "flag":"0"})
         });
 
-        res.json(
-            {success:contact}
-        )
+
     });
 
     //remove a contact record by _id
