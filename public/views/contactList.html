@@ -1,4 +1,4 @@
-<div ng-show="contact.contactsList == 0">There are not contacts to show. <a ui-sref="new">Try adding one</a>.</div>
+<div ng-show="contact.contactsList == 0">There are not contacts to show. <a ui-sref="create">Try adding one</a>.</div>
 
 <div ng-show="contact.contactsList.length > 0">
     <form class="form-inline" action="" role="form" ng-submit="">
@@ -7,7 +7,7 @@
         </div>
     </form>
     
-    <table class="table">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th> Full Name </th>
@@ -23,7 +23,10 @@
                 <td>{{dude.where}}</td>
                 <td>{{dude.phone}}</td>
                 <td>{{dude.address}}</td>
-                <td><a href="#" class="btn btn-primary">See more details</a></td>
+                <td>
+                    <button class="btn btn-xs btn-info">View details</button>
+                    <button class="btn btn-xs btn-danger" ng-click="contact.delete(dude)">Remove</button>
+                </td>
             </tr>
         </tbody>
     </table>

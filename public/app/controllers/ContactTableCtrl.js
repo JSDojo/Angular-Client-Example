@@ -1,6 +1,8 @@
 (function() {
-    ContactTableCtrl = function(Contact){
+    ContactTableCtrl = function(Contact, $location){
         var vm = this;
+
+        window.vm = vm;
 
         init();
 
@@ -98,10 +100,24 @@
             }
         }
 
-        vm.createContact = function() {
+        vm.create = function() {
+            // TO DO: show loading.
             Contact.create(vm.newContact).then(function(result){
-                console.log(result);
+                // TO DO: remove loading.
+                $location.path('/home');
             });
+        }
+
+        vm.delete = function(contact) {
+            // TO DO: look for a better confirmation way.
+            response = confirm('Are you sure you want to remove the contact ' + contact.fname);
+
+            if (response) {
+                // TO DO: show loading.
+                Contact.delete(contact).then(function(result){
+                    // TO DO: remove loading.
+                });
+            }
         }
     }
 
