@@ -1,5 +1,5 @@
 (function() {
-    ContactTableCtrl = function(Contact, $location){
+    ContactTableCtrl = function(Contact, $location, $scope){
         var vm = this;
 
         window.vm = vm;
@@ -102,7 +102,7 @@
 
         vm.create = function() {
             // TO DO: show loading.
-            Contact.create(vm.newContact).then(function(result){
+            Contact.save(vm.newContact).$promise.then(function() {
                 // TO DO: remove loading.
                 $location.path('/home');
             });
@@ -114,23 +114,27 @@
 
             if (response) {
                 // TO DO: show loading.
-                Contact.delete(contact).then(function(result){
+                Contact.delete({ id: contact._id }).$promise.then(function() {
                     // TO DO: remove loading.
+                    var position = vm.contactsList.indexOf(contact);
+                    vm.contactsList.splice(position, 1);
                 });
             }
         }
     }
 
     ContactTableCtrl.resolve = {
-        contacts: function (Contact, $q) {
-            var deferred = $q.defer();
+        contacts: function (Contact, $q, $timeout) {
+            var d = $q.defer();
 
-            Contact.findAll().then(function(result) {
-                Contact.contactsList = result;
-                deferred.resolve();
-            });
+            Contact.query().$promise.then(
+                function(result) {
+                    Contact.contactsList = result;
+                    d.resolve();
+                }
+            );
 
-            return deferred.promise;
+            return d.promise;
         }
     }
 
