@@ -1,6 +1,8 @@
 (function() {
-    ContactTableCtrl = function(Contact){
+    ContactTableCtrl = function(Contact, $location, $scope){
         var vm = this;
+
+        window.vm = vm;
 
         init();
 
@@ -98,23 +100,41 @@
             }
         }
 
-        vm.createContact = function() {
-            Contact.create(vm.newContact).then(function(result){
-                console.log(result);
+        vm.create = function() {
+            // TO DO: show loading.
+            Contact.save(vm.newContact).$promise.then(function() {
+                // TO DO: remove loading.
+                $location.path('/home');
             });
+        }
+
+        vm.delete = function(contact) {
+            // TO DO: look for a better confirmation way.
+            response = confirm('Are you sure you want to remove the contact ' + contact.fname);
+
+            if (response) {
+                // TO DO: show loading.
+                Contact.delete({ id: contact._id }).$promise.then(function() {
+                    // TO DO: remove loading.
+                    var position = vm.contactsList.indexOf(contact);
+                    vm.contactsList.splice(position, 1);
+                });
+            }
         }
     }
 
     ContactTableCtrl.resolve = {
-        contacts: function (Contact, $q) {
-            var deferred = $q.defer();
+        contacts: function (Contact, $q, $timeout) {
+            var d = $q.defer();
 
-            Contact.findAll().then(function(result) {
-                Contact.contactsList = result;
-                deferred.resolve();
-            });
+            Contact.query().$promise.then(
+                function(result) {
+                    Contact.contactsList = result;
+                    d.resolve();
+                }
+            );
 
-            return deferred.promise;
+            return d.promise;
         }
     }
 

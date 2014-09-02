@@ -55,7 +55,7 @@ module.exports = function(server) {
     });
 
     //remove a contact record by _id
-    router.delete('/contact/:contact_id', function(req,res){
+    router.delete('/contacts/:contact_id', function(req,res){
         console.log('deleting a contact ...');
 
         Contact.remove({
