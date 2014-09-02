@@ -18,7 +18,14 @@
 		this.find = function(id) {
 			var deferred = $q.defer();
 			
-			deferred.resolve(true);
+			$http({
+				url: 'http://localhost:3001/api/contact/' + id,
+				method: 'GET'
+			}).success(function(result) {
+				deferred.resolve(result);
+			}).error(function(error){
+				deferred.reject(error);
+			});
 
 			return deferred.promise;
 		}
